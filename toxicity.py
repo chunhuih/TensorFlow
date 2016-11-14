@@ -5,7 +5,7 @@ import tensorflow as tf
 # from tensorflow.examples.tutorials.mnist import input_data
 # mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
-# tis is the number of independents
+# this is the number of independents
 num_independents = 30
 # x is the vector containing all the independent variables
 x = tf.placeholder(tf.float32, [None, num_independents])
@@ -21,7 +21,9 @@ print(x)
 # y_ is the true distribution from actual data.
 y_ = tf.placeholder(tf.float32,[None, 5])
 # the cross entropy is to be minimized.
-cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
+# cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
+# tf.reduce_mean() takes the average of the sums
+cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, y_))
 
 train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 init=tf.initialize_all_variables()
