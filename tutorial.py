@@ -2,8 +2,8 @@ import tensorflow as tf
 import numpy as np
 
 #create 100 phony x, y data points in NumPy y = x * 0.1 + 0.3
-# x_data = np.random.rand(10).astype(np.float32)
-x_data = np.array(list(range(100))).astype(np.float32)
+x_data = np.random.rand(10).astype(np.float32) * 100
+#x_data = np.array(list(range(100))).astype(np.float32)
 y_data = x_data * 0.1 + 0.3
 print x_data
 W = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
